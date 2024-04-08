@@ -29,7 +29,8 @@ export async function getServerSideProps() {
 
 export async function changeServerSideProps(todo: Todo) {
     try {
-        return await editTodo({...todo, done: !todo.done});
+        todo.done = !todo.done
+        return await editTodo(todo);
     } catch (error) {
         console.error("An error occurred while putting todos:", error);
         throw error;

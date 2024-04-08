@@ -21,15 +21,15 @@ class PostController {
     }
 
     async update(req, res) {
-        console.log("you're in the backend update function");
         try {
-            const todo = req.body;
-            if (!todo._id) {
+            const todo = req.body[0];
+            if (!req.body[0]._id) {
                 return res.status(400).json({ message: "ID not found" });
             }
-            console.log("you're in the middle of processing the request");
-            const updatedTodo = await TodoSchema.findByIdAndUpdate(todo._id, todo, { new: true });
-            console.log("todo updated successfully:", updatedTodo);
+            const updatedTodo = await TodoSchema.findByIdAndUpdate(
+                todo._id,
+                todo
+            );
             return res.json(updatedTodo);
         } catch (error) {
             console.error("An error occurred while updating todo:", error);

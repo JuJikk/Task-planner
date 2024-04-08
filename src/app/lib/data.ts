@@ -24,9 +24,7 @@ export async function fetchTodos() {
 
 export async function editTodo(updatedTodoData: Todo) {
         try {
-                console.log(updatedTodoData)
                 const response = await axios.put('http://localhost:4000/api/posts', [updatedTodoData]);
-                console.log('ejsdlkfnjmjke')
                 return response.data;
         } catch (error) {
                 console.error('Error updating todo:', error);

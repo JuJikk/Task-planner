@@ -16,7 +16,8 @@ export default function Page() {
     }
 
     useEffect(() => {
-        fetchData();
+        // console.log("data i changed")
+        fetchData().then(() => console.log("data is changed"));
     }, [dataChanged]);
 
     const fetchData = async () => {
