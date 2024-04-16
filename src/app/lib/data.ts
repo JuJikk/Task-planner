@@ -1,9 +1,10 @@
 import axios from "axios";
 import {Todo, TodoCreate} from "@/app/lib/defenitions";
+const BACKEND_URL = process.env.BACKEND_URL
 
 export async function createTodo(newTodo: TodoCreate) {
         try {
-                const response = await axios.post('http://localhost:4000/api/posts', newTodo);
+                const response = await axios.post(`${BACKEND_URL}/api/posts`, newTodo);
                 return response.data;
         } catch (error) {
                 console.error('Error creating todo:', error);
@@ -13,7 +14,7 @@ export async function createTodo(newTodo: TodoCreate) {
 
 export async function fetchTodos() {
         try {
-                const response = await axios.get('http://localhost:4000/api/posts');
+                const response = await axios.get(`${BACKEND_URL}/api/posts`);
                 return response.data;
         } catch (error) {
                 console.error('Error fetching todos:', error);
@@ -24,7 +25,7 @@ export async function fetchTodos() {
 
 export async function editTodo(updatedTodoData: Todo) {
         try {
-                const response = await axios.put('http://localhost:4000/api/posts', [updatedTodoData]);
+                const response = await axios.put(`${BACKEND_URL}/api/posts`, [updatedTodoData]);
                 return response.data;
         } catch (error) {
                 console.error('Error updating todo:', error);
@@ -34,7 +35,7 @@ export async function editTodo(updatedTodoData: Todo) {
 
 export async function deleteTodo(id: number) {
         try {
-                const response = await axios.delete(`http://localhost:4000/api/posts/${id}`)
+                const response = await axios.delete(`${BACKEND_URL}/api/posts/${id}`)
                 return response.data
         } catch (error) {
                 console.error('Error deleting todo:', error);
