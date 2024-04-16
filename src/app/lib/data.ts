@@ -1,6 +1,8 @@
 import axios from "axios";
 import {Todo, TodoCreate} from "@/app/lib/defenitions";
-const BACKEND_URL = process.env.BACKEND_URL
+require('dotenv').config();
+
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 export async function createTodo(newTodo: TodoCreate) {
         try {
