@@ -1,4 +1,5 @@
 'use client'
+require('dotenv').config();
 
 import TodoItem from "@/app/ui/todolist/TodoItem";
 import {Todo} from "@/app/lib/defenitions";
@@ -16,7 +17,6 @@ export default function Page() {
     }
 
     useEffect(() => {
-        // console.log("data i changed")
         fetchData().then(() => console.log("data is changed"));
     }, [dataChanged]);
 
@@ -28,6 +28,8 @@ export default function Page() {
             console.error('Error fetching data:', error);
         }
     };
+
+    console.log(process.env.NEXT_PUBLIC_BACKEND_URL)
 
     return (
         <div className="w-96 m-auto h-auto shadow-lg rounded-lg overflow-hidden mt-40">
